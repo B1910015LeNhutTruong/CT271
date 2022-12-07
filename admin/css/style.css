@@ -1,0 +1,66 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+}
+
+header{
+    background-color: #f8f8f8;
+    height: 50px;
+    color: #7c8189;    
+}
+
+footer{
+    padding:15px 0;
+    height: 57px;
+    background-color: #f8f8f8;
+    position: fixed;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+}
+
+
+/* ------------------------------------- */
+/* Login*/
+#btn_back_show_all_product, #btn_login{
+    text-decoration: none;
+    color: #7c8189;
+    font-weight: 800;
+} 
+
+#btn_login{
+    float: right;
+}
+
+#btn_login:hover, #btn_back_show_all_product:hover{
+    color: #1097cf;
+}
+
+
+/* ------------------------------------- */
+/* Show all product*/
+#btn_add_new_product_show_all_product{
+    background-color: #1097cf;
+}
+
+#btn_add_new_product_show_all_product:hover{
+    color: #fff
+}
+
+#tbody_show_all_product img{
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    display: block;
+}
+
+#btn_edit_show_all_product, #btn_del_show_all_product{
+    background-color: #1097cf;
+}
+
+#btn_edit_show_all_product:hover, #btn_del_show_all_product:hover{
+    color: #fff;
+}
+
+
+/* ------------------------------------- */
+/* Add product*/
