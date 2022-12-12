@@ -13,7 +13,7 @@
     <h3 id="title_register" class="text-center">ĐĂNG KÝ TÀI KHOẢN</h3>
     <div class="row">
         <div class="col-lg"></div>
-        <form class="col" id="form_register" method="post" action="#">
+        <form class="col" id="form_register" method="post" action="#" style="padding: 20px; box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;">
             <div id="nav_form_login" class="row border-bottom">
                 <div class="col text-center nav_login_register border-end"><a id="switch_login" href="?action=login">Đăng nhập</a></div><!-- bổ sung href  -->
                 <div class="col text-center nav_login_register"><a style="color: black; pointer-events: none;" href="#">Đăng ký</a></div>

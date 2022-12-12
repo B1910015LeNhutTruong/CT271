@@ -1,3 +1,4 @@
+//Các thuộc tính trong required lấy theo name
 
 $(function(){
     $('#form_register').validate({
@@ -72,3 +73,37 @@ $(function(){
     });
 });
 
+$(function(){
+    $('#form_change_password').validate({
+        rules:{
+            new_password_change_password: {required: true, minlength: 5},
+            repeat_password_change_password: {required: true, minlength: 5, equalTo: "#new_password_change_password"}
+        },
+        messages:{
+            new_password_change_password:{
+                required: "Bạn chưa nhập vào mật khẩu",
+                minlength: "Mật khẩu phải có ít nhất 5 ký tự"
+            },
+            repeat_password_change_password:{
+                required: "Bạn chưa nhập vào mật khẩu",
+                minlength: "Mật khẩu phải có ít nhất 5 ký tự",
+                equalTo: "Mật khẩu không trùng khớp với mật khẩu mới đã nhập"
+            },
+        },
+        errorElement: "div",	
+        errorPlacement: function(error, element){
+            error.addClass("invalid-feedback");
+            if(element.prop("type")==="checkbox"){
+                error.insertAfter(element.siblings("label"));
+            }else{
+                error.insertAfter(element);
+            }
+        },
+        highlight: function(element, errorClass, validClass){
+            $(element).addClass("is-invalid").removeClass("is-valid");
+        },
+        unhighlight: function(element, errorClass, validClass){
+            $(element).addClass("is-valid").removeClass("is-invalid");
+        }
+    });
+});

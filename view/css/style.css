@@ -534,8 +534,59 @@ header{
 
 
 /* ------------------------------------- */
-/* Register */
+/* Account info */
+#nav_account_info{
+    background-color: #f1f1f1;
+    padding: 30px;
+}
 
+#nav_account_info > a{
+    text-decoration: none;
+    color: #1097cf;
+}
+
+#info_account_info, #change_account_info, #change_password{
+    padding: 30px;
+    background-color: #f1f1f1;
+}
+
+#info_account_info > h3, #change_account_info > h3, #change_password>h3{
+    color: #1097cf;
+}
+
+#agree_cancel_order_account_info{
+    text-decoration: none;
+    color: #fff;    
+}
+
+
+/* ------------------------------------- */
+/* Change Account info */
+
+
+/* ------------------------------------- */
+/* Change password */
+#btn_change_password{
+    padding: 10px;
+    background-color: #1097cf;
+    border-radius: 5px;
+    border: 0px;
+}
+
+#btn_change_password:hover{
+    background-color: #147098;
+}
+
+
+/* ------------------------------------- */
+/* Detail Order */
+#btn_back_detail_order{
+    color: #fff;
+    background-color: #1097cf;
+    border-radius: 6px;
+    padding: 5px 10px;
+    border: 2px solid black;
+}
 
 
 /* ------------------------------------- */

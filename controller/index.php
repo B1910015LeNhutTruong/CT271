@@ -161,6 +161,30 @@
                 $result_search_product=search_product();
                 include '../view/search_product.php';
                 break;
+            case 'account_info':
+                if(isset($_SESSION['remember_email_login'])){
+                    $result_account_info=get_account_info($_SESSION['remember_email_login']);
+                    $result_all_orders=get_all_orders($_SESSION['remember_email_login']);
+                }
+
+                if(isset($_GET['agree_cancel_order']) && isset($_GET['id_of_order_cancel'])){
+                    cancel_orders($_GET['id_of_order_cancel']);
+                    header("Location: ?action=account_info");
+                }
+                
+                include '../view/account_info.php';
+                break;
+            case 'detail_order':
+                if(isset($_GET['id_of_order'])){
+                    //Hàm lấy thông tin chi tiết đơn hàng
+                    $result_detail_order=get_detail_order($_GET['id_of_order']);
+                }
+                include '../view/detail_order.php';
+                break;
+            case 'change_account_info':
+                change_account_info();
+                include '../view/change_account_info.php';
+                break;
             default:
                 include '../view/home.php';    
                 break;

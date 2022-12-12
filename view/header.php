@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../view/js/jquery-3.6.1.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
     <link rel="stylesheet" href="../view/css/style.css" type="text/css">
@@ -37,7 +38,7 @@
                             <i id="icon_user" class="fas fa-user"></i>
                             <ul id="login_register_header">
                                 <?php if(isset($_SESSION['remember_username_login']) && isset($_SESSION['remember_email_login']) && isset($_SESSION['remember_phone_number_login'])){
-                                    echo '<li><a id="login_header" style="pointer-events: none;" href="">'.$_SESSION['remember_username_login'].'</a></li>';
+                                    echo '<li><a id="login_header" href="../controller/index.php?action=account_info">'.$_SESSION['remember_username_login'].'</a></li>';
                                     echo '<li><a id="register_header" href="../controller/index.php?action=logout">Đăng xuất</a></li>';
                                 }else{ ?>
 

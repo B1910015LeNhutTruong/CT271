@@ -167,5 +167,64 @@
             return $result_search_key;
         }
     }
+
+    function get_account_info($email){
+        include(__DIR__ . '.\file_pdo_connect.php');
+        $sql="select * from account where email=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$email]);
+
+        $result_account_info=$stmt->fetch();
+        return $result_account_info; 
+    }
+
+    function get_all_orders($email){
+        include(__DIR__ . '.\file_pdo_connect.php');
+        $sql="select * from orders where email=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$email]);
+
+        $result_all_orders=$stmt->fetchAll();
+        return $result_all_orders;
+        $conn=null;
+    }
+
+    function cancel_orders($id_of_order_cancel){
+        include(__DIR__ . '.\file_pdo_connect.php'); 
+        $sql="update orders set status =? where id=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute(['Đã hủy',$id_of_order_cancel]);
+        $conn=null;
+    }
+
+    function get_detail_order($id_of_order){
+        include(__DIR__ . '.\file_pdo_connect.php'); 
+        $sql="select * from order_detail where id_orders=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$id_of_order]);
+
+        $result_detail_order=$stmt->fetchAll();
+        return $result_detail_order;
+        $conn=null;
+    }
+
+    function change_account_info(){
+        include(__DIR__ . '.\file_pdo_connect.php'); 
+        if(isset($_POST['btn_change_account_info'])){
+            if(isset($_SESSION['remember_email_login'])){
+                if(isset($_POST['full_name_change_account_info']) && isset($_POST['phone_number_change_account_info'])){
+                    $sql="update account set full_name=?, phone_number=? where email=?";
+                    $stmt=$conn->prepare($sql);
+                    $stmt->execute([$_POST['full_name_change_account_info'], $_POST['phone_number_change_account_info'], $_SESSION['remember_email_login']]);
+                    echo '<script language="javascript">';
+                    echo 'alert("Cập nhật thông tin người dùng thành công");'; 
+                    echo '</script>';
+                }
+            }
+        }
+        
+        $conn=null;
+    }
+    
 ?>
 
