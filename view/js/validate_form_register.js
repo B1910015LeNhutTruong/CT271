@@ -12,7 +12,11 @@ $(function(){
         messages:{
             fullname_register: "Bạn chưa nhập vào họ tên của bạn",
             email_register: "Hộp thư điện tử không hợp lệ",
-            phone_number_register: "Số điện thoại không hợp lệ, phải có ít nhất 10 ký tự",
+            phone_number_register:{
+                required: "Bạn chưa nhập vào số điện thoại",
+                minlength: "Số điện thoại không hợp lệ, phải có ít nhất 10 ký tự",
+                maxlength: "Số điện thoại có tối đa 10 kí tự"
+            },
             password_register:{
                 required: "Bạn chưa nhập vào mật khẩu",
                 minlength: "Mật khẩu phải có ít nhất 5 ký tự"
@@ -39,20 +43,21 @@ $(function(){
             $(element).addClass("is-valid").removeClass("is-invalid");
         }
     });
-});
 
-$(function(){
     $('#form_info_customer_cart').validate({
         rules:{
             fullname_customer_cart: "required",
             email_customer_cart: {required: true, email: true},
-            phone_number_customer_cart: {required: true, number: true, minlength: 10},
+            phone_number_customer_cart: {required: true, number: true, minlength:10, maxlength: 10},
             address_customer_cart: {required: true, minlength: 20}
         },
         messages:{
             fullname_customer_cart: "Bạn chưa nhập vào họ tên của bạn",
             email_customer_cart: "Hộp thư điện tử không hợp lệ",
-            phone_number_customer_cart: "Số điện thoại không hợp lệ, phải có ít nhất 10 ký tự",
+            phone_number_customer_cart: {
+                minlength: "Số điện thoại không hợp lệ, phải có ít nhất 10 ký tự",
+                maxlength: "Số điện thoại có tối đa 10 kí tự"
+            },
             address_customer_cart: "Bạn chưa nhập đầy đủ địa chỉ đầy đủ",
         },
         errorElement: "div",	
@@ -71,9 +76,7 @@ $(function(){
             $(element).addClass("is-valid").removeClass("is-invalid");
         }
     });
-});
 
-$(function(){
     $('#form_change_password').validate({
         rules:{
             new_password_change_password: {required: true, minlength: 5},
@@ -106,4 +109,8 @@ $(function(){
             $(element).addClass("is-valid").removeClass("is-invalid");
         }
     });
+    
 });
+
+console.log("Hello");
+

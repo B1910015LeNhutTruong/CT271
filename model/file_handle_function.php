@@ -144,7 +144,7 @@
 
     function create_order(){
         include_once(__DIR__ . '.\file_pdo_connect.php');
-        if(isset($_POST['btn_agree_order_cart'])){
+        if(isset($_POST['btn_agree_order_cart']) && isset($_SESSION['cart'])){
             if(isset($_POST['fullname_customer_cart']) && isset($_POST['email_customer_cart']) && isset($_POST['phone_number_customer_cart']) && isset($_POST['address_customer_cart']) && isset($_POST['payments_of_customer_cart']) && isset($_POST['total_cart_value'])){
                 $sql="insert into orders (full_name,address,phone_number,email,total,payment) values (?,?,?,?,?,?)"; 
                 $stmt=$conn->prepare($sql);
@@ -152,6 +152,9 @@
             }
             return $conn->lastInsertID();
             $conn= null;
+        }
+        else{
+            return "no product in cart";
         }
     }
 
@@ -216,6 +219,10 @@
                     $sql="update account set full_name=?, phone_number=? where email=?";
                     $stmt=$conn->prepare($sql);
                     $stmt->execute([$_POST['full_name_change_account_info'], $_POST['phone_number_change_account_info'], $_SESSION['remember_email_login']]);
+
+                    $_SESSION['remember_username_login']=$_POST['full_name_change_account_info'];
+                    $_SESSION['remember_phone_number_login']=$_POST['phone_number_change_account_info'];
+
                     echo '<script language="javascript">';
                     echo 'alert("Cập nhật thông tin người dùng thành công");'; 
                     echo '</script>';

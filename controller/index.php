@@ -40,15 +40,15 @@
                 $status_register_account=register_account();
                 if($status_register_account=='email_already_exists'){
                     echo '<script language="javascript">';
-                    echo 'alert("Hãy đăng ký bằng email khác !!!");'; 
+                    echo 'alert("Hãy đăng ký bằng email khác !");'; 
                     echo '</script>';
                 }elseif($status_register_account=='no'){
                     echo '<script language="javascript">';
-                    echo 'alert("Đăng kí thất bại !!!");'; 
+                    echo 'alert("Đăng kí thất bại !");'; 
                     echo '</script>';
                 }elseif($status_register_account=='ok'){
                     echo '<script language="javascript">';
-                    echo 'alert("Đăng kí tài khoản thành công ! Hãy tiến hành đăng nhập để mua hàng !!!");'; 
+                    echo 'alert("Đăng kí tài khoản thành công ! Hãy tiến hành đăng nhập để mua hàng !");'; 
                     echo '</script>';
                 }
                 include '../view/register.php';
@@ -62,7 +62,7 @@
                     header("Location: ?action=home");
                 }elseif($status_login_account=='no'){
                     echo '<script language="javascript">';
-                    echo 'alert("Đăng nhập thất bại, vui lòng thử lại !!!");'; 
+                    echo 'alert("Đăng nhập thất bại, vui lòng thử lại !");'; 
                     echo '</script>';
                 }
                 include '../view/login.php';
@@ -138,10 +138,14 @@
                 }
                 break;
             case 'agree_order'://done
-                if(isset($_SESSION['cart'])){
-                    $last_id_of_orders=create_order();
+                $last_id_of_orders=create_order();
+                if($last_id_of_orders=="no product in cart"){
+                    echo '<script language="javascript">';
+                    echo 'alert("Vui lòng thêm sản phẩm vào giỏ hàng!");'; 
+                    echo '</script>';
+                    header("Location: ?action=home");
+                }else{
                     $product_in_orders=$_SESSION['cart'];
-
                     include PATH_TO_FILE_PDO;
                     if(isset($_POST['btn_agree_order_cart'])){
                         $sql="insert into order_detail(product_name, product_img, price, amount, thanhtien, id_orders) values (?,?,?,?,?,?)";
@@ -150,8 +154,8 @@
                             $stmt->execute([$value['product_name'], $value['img'], $value['price'], $value['quantity'], $value['price']*$value['quantity'],$last_id_of_orders]);
                         }
                     }
+                    include '../view/order_success.php';
                 }
-                include '../view/order_success.php';
                 break;
             case 'delete_order'://done
                 unset($_SESSION['cart']);
