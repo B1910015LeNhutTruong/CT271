@@ -58,10 +58,12 @@
                             setcookie("remember_username_login", $fullname_login, time() + 3600);
                             setcookie("remember_email_login", $result['email'], time() + 3600);
                             setcookie("remember_phone_number_login", $result['phone_number'], time() + 3600);
+                            setcookie("remember_password_login", $password_login, time() + 3600);
                         }else{
                             $_SESSION['remember_username_login']=$fullname_login;
                             $_SESSION['remember_email_login']=$result['email'];
                             $_SESSION['remember_phone_number_login']=$result['phone_number'];
+                            $_SESSION['remember_password_login']=$password_login;
                         }
                     }else{
                         $login_ok='no';
@@ -231,6 +233,23 @@
         }
         
         $conn=null;
+    }
+
+    function change_password(){
+        $change_password_status='';
+        if(isset($_POST['btn_change_password'])){
+            if(isset($_SESSION['remember_email_login']) && isset($_POST['current_password_change_password']) && isset($_POST['new_password_change_password']) && isset($_POST['repeat_password_change_password']) && ($_POST['current_password_change_password']==$_SESSION['remember_password_login'])){
+                include(__DIR__ . '.\file_pdo_connect.php');
+                $sql="update account set pass_word=? where email=?";
+                $stmt=$conn->prepare($sql);
+                $stmt->execute([password_hash($_POST['new_password_change_password'], PASSWORD_DEFAULT), $_SESSION['remember_email_login']]);
+                $change_password_status='ok';
+                $conn=null;
+            }else{
+                $change_password_status='no';
+            }
+        }
+        return $change_password_status;
     }
     
 ?>

@@ -11,9 +11,9 @@
 <main class="container">
     <div class="row">
         <div id="nav_account_info" class="col-md-3">
-            <a href="">Thông tin và liên hệ</a>
+            <a href="?action=account_info">Thông tin và liên hệ</a>
             <div class="d-block mt-3">Đổi thông tin người dùng</div>
-            <a href="" class="d-block mt-3">Đổi mật khẩu</a>
+            <a href="?action=change_password" class="d-block mt-3">Đổi mật khẩu</a>
         </div>
         <div id="change_account_info" class="col-md-8 offset-md-1">
             <h3>Đổi thông tin tài khoản</h3>   

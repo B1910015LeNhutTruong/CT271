@@ -140,9 +140,7 @@
             case 'agree_order'://done
                 $last_id_of_orders=create_order();
                 if($last_id_of_orders=="no product in cart"){
-                    echo '<script language="javascript">';
-                    echo 'alert("Vui lòng thêm sản phẩm vào giỏ hàng!");'; 
-                    echo '</script>';
+                    echo '<script>alert("Vui lòng thêm sản phẩm vào giỏ hàng!")</script>'; //câu lệnh này không thực hiện được
                     header("Location: ?action=home");
                 }else{
                     $product_in_orders=$_SESSION['cart'];
@@ -189,6 +187,15 @@
                 change_account_info();
                 include '../view/change_account_info.php';
                 break;
+            case 'change_password':
+                $change_password_status=change_password();
+                if($change_password_status=='ok'){
+                    echo '<script>alert("Đổi mật khẩu thành công!")</script>'; 
+                }elseif($change_password_status=='no'){
+                    echo '<script>alert("Mật khẩu cũ không đúng!")</script>'; 
+                }
+                include '../view/change_password.php';
+                break;    
             default:
                 include '../view/home.php';    
                 break;

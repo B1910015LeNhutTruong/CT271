@@ -13,7 +13,7 @@
         <div id="nav_account_info" class="col-md-3">
             <div>Thông tin và liên hệ</div>
             <a href="?action=change_account_info" class="d-block mt-3">Đổi thông tin người dùng</a>
-            <a href="" class="d-block mt-3">Đổi mật khẩu</a>
+            <a href="?action=change_password" class="d-block mt-3">Đổi mật khẩu</a>
         </div>
         <div id="info_account_info" class="col-md-8 offset-md-1">
             <h3>Thông tin</h3>

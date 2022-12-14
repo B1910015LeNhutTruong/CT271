@@ -1,9 +1,10 @@
 <!-- done -->
 <?php 
-    if(isset($_COOKIE["remember_username_login"]) && isset($_COOKIE["remember_email_login"]) && isset($_COOKIE["remember_phone_number_login"])){
+    if(isset($_COOKIE["remember_username_login"]) && isset($_COOKIE["remember_email_login"]) && isset($_COOKIE["remember_phone_number_login"]) && isset($_COOKIE["remember_password_login"])){
         $_SESSION['remember_username_login']=$_COOKIE["remember_username_login"];
         $_SESSION['remember_email_login']=$_COOKIE["remember_email_login"];
         $_SESSION['remember_phone_number_login']=$_COOKIE["remember_phone_number_login"];
+        $_SESSION['remember_password_login']=$_COOKIE["remember_password_login"];
     }
 ?>
 
