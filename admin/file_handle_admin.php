@@ -116,4 +116,23 @@
         $stmt->execute([$product_name, $price, $category_id, $description, $color, $brand, $id_of_product]);
     }
 
+    function get_all_order(){
+        include PATH_TO_CONNECT_DB;
+        $sql="select * from orders";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute();
+
+        $result_of_all_orders=$stmt->fetchAll();
+        return $result_of_all_orders;
+    }
+
+    function get_detail_order($id_of_order){
+        include PATH_TO_CONNECT_DB;
+        $sql="select * from order_detail where id_orders=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$id_of_order]);
+
+        $result_of_detail_order=$stmt->fetchAll();
+        return $result_of_detail_order;
+    }
 ?>

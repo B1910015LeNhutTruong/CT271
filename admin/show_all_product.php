@@ -68,7 +68,20 @@
             <h3 class="text-center">CHASTAIN</h3>
             <p class="text-center">Tất cả sản phẩm ở đây</p>
         </div>
-        <div class="row">
+
+        <div>
+            <button id="btn_collapse_show_all_product" class="btn btn-danger" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <i class="fas fa-th-list"></i>
+            </button>
+        </div>
+        <div class="collapse mt-2" id="collapseExample">
+            <div class="card card-body" style="width: 18rem;" id="card_body_show_all_product">
+                <a href="">Quản lý tài khoản</a>
+                <a href="show_all_order.php">Quản lý đơn hàng</a>
+            </div>
+        </div>
+
+        <div class="row mt-3">
             <a href="add.php"><button class="btn" id="btn_add_new_product_show_all_product">Thêm sản phẩm mới</button></a> 
         </div>
         <div class="row mt-4" style="height: 500px; overflow-y: scroll;">
