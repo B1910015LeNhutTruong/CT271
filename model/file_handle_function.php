@@ -1,4 +1,5 @@
 <?php
+    //Hàm check xem email có tồn tại chưa
     function check_email_exist($email,$conn){
         $sql="select * from account where email = ?";
         $stmt = $conn -> prepare($sql);
@@ -6,8 +7,9 @@
         return $stmt->rowCount();
     }
 
+    //Hàm kiểm tra quá trình đăng ký tài khoản
     function register_account(){
-        include_once(__DIR__ . '.\file_pdo_connect.php');
+        include(__DIR__ . '.\file_pdo_connect.php');
         $register_ok='';
         if(isset($_POST['btn_register'])){
             if(isset($_POST['fullname_register']) && isset($_POST['email_register']) && isset($_POST['phone_number_register']) && isset($_POST['password_register']) && isset($_POST['password_repeat_register'])){
@@ -33,8 +35,9 @@
         return $register_ok;
     }
 
+    //Hàm đăng nhập
     function login_account(){
-        include_once(__DIR__ . '.\file_pdo_connect.php');
+        include(__DIR__ . '.\file_pdo_connect.php');
         $login_ok='';
         if(isset($_POST['btn_login'])){
             if(isset($_POST['email_login']) && isset($_POST['password_login']) && ($_POST['email_login']!="admin@gmail.com")){
@@ -78,8 +81,19 @@
         return $login_ok;
     }
 
+    //Hàm lấy thông tin tất các các loại sản phẩm
+    function get_all_category(){
+        include(__DIR__ . '.\file_pdo_connect.php');
+        $sql="select * from category";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute();
+        $result_of_all_category=$stmt->fetchAll();
+        return $result_of_all_category;
+    }
+
+    //Hàm lấy thông tin các sản phẩm theo loại
     function list_of_products(){
-        include_once(__DIR__ . '.\file_pdo_connect.php');
+        include(__DIR__ . '.\file_pdo_connect.php');
         if(isset($_GET['id_of_category'])){
             $category_id=$_GET['id_of_category'];
             if($category_id=='all'){
@@ -98,7 +112,7 @@
     
 
     function product_details(){
-        include_once(__DIR__ . '.\file_pdo_connect.php');
+        include(__DIR__ . '.\file_pdo_connect.php');
         if(isset($_GET['id_of_product'])){
             $id_of_product=$_GET['id_of_product'];
             $sql="select * from product where id=?";
@@ -111,7 +125,7 @@
     }
     
     function add_product_into_cart(){
-        include_once(__DIR__ . '.\file_pdo_connect.php');
+        include(__DIR__ . '.\file_pdo_connect.php');
         if(isset($_POST['btn_add_into_cart'])){
             if(isset($_POST['quantity'])){
                 $the_number_of_products=$_POST['quantity'];
@@ -145,7 +159,7 @@
     }
 
     function create_order(){
-        include_once(__DIR__ . '.\file_pdo_connect.php');
+        include(__DIR__ . '.\file_pdo_connect.php');
         if(isset($_POST['btn_agree_order_cart']) && isset($_SESSION['cart'])){
             if(isset($_POST['fullname_customer_cart']) && isset($_POST['email_customer_cart']) && isset($_POST['phone_number_customer_cart']) && isset($_POST['address_customer_cart']) && isset($_POST['payments_of_customer_cart']) && isset($_POST['total_cart_value'])){
                 $sql="insert into orders (full_name,address,phone_number,email,total,payment) values (?,?,?,?,?,?)"; 
@@ -161,7 +175,7 @@
     }
 
     function search_product(){
-        include_once(__DIR__ . '.\file_pdo_connect.php'); 
+        include(__DIR__ . '.\file_pdo_connect.php'); 
         if(isset($_GET['search_input_header'])){
             $search_key=$_GET['search_input_header'];
             $sql="select * from product where product_name LIKE '%$search_key%'"; //not a php statement so no string concatenation needed

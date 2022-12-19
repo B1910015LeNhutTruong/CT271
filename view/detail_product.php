@@ -5,7 +5,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb justify-content-center">
             <li class="breadcrumb-item"><a href="?action=home">Trang chủ</a></li>&nbsp;
-            <li style="font-weight: 600;" class="breadcrumb-item"><a href="?action=list_product&id_of_category=<?php echo $id_of_category;?>"><?php echo $name_of_category;?></a></li>&nbsp;
+            <li style="font-weight: 600;" class="breadcrumb-item"><a href="?action=list_product&id_of_category=<?php if(isset($id_of_category)){echo $id_of_category;}?>"><?php echo $name_of_category;?></a></li>&nbsp;
             <li class="breadcrumb-item active" aria-current="page" style="color: #1097cf; font-weight: 600; font-size: 16px;">&nbsp;<?php echo $detail_of_product['product_name'];?></li>
         </ol>
     </nav>

@@ -1,7 +1,8 @@
 <?php 
     define("PATH_TO_CONNECT_DB","file_connect_pdo.php");
 
-    function show_all_product(){
+    //hàm lấy thông tin tất cả sản phẩm
+    function show_all_product(){ 
         include PATH_TO_CONNECT_DB;
         $sql="select * from product join category on product.category_id=category.id";
         $stmt=$conn->prepare($sql);
@@ -10,6 +11,7 @@
         return $result_of_all_product;
     }
     
+    //hàm lấy id và tên của tất cả loại sản phẩm
     function get_all_category(){
         include PATH_TO_CONNECT_DB;
         $sql="select * from category";
@@ -19,6 +21,7 @@
         return $result_of_all_category;
     }
 
+    //hàm kiểm tra ảnh có thể upload không
     function check_img_upload($img_of_product){
         $target_dir = "upload/";
         $target_file = $target_dir . basename($img_of_product["name"]);
@@ -49,6 +52,7 @@
         return $upload_ok;
     }
 
+    //hàm xóa sản phẩm
     function delete_product($id_of_product){
         include PATH_TO_CONNECT_DB;
         $sql2="select * from product where id=?";
@@ -63,6 +67,7 @@
         $stmt->execute([$id_of_product]); 
     }
 
+    //hàm kiểm tra đăng nhập
     function login_admin(){
         include PATH_TO_CONNECT_DB;
         $login_status='';
@@ -100,6 +105,7 @@
         return $login_status;
     }
 
+    //hàm lấy thông tin của 1 sản phẩm cụ thể
     function get_data_product_from_db($id_of_product){
         include PATH_TO_CONNECT_DB;
         $sql="select * from product where id=?";
@@ -108,7 +114,8 @@
         $result=$stmt->fetch();
         return $result;
     }
-    
+
+    //Hàm cập nhật thông tin sản phẩm
     function update_data_product($product_name, $price, $category_id, $description, $color, $brand, $id_of_product){
         include PATH_TO_CONNECT_DB;
         $sql="update product set product_name=?, price=?, category_id=?, description=?, color=?, brand=? where id=?";
@@ -116,6 +123,7 @@
         $stmt->execute([$product_name, $price, $category_id, $description, $color, $brand, $id_of_product]);
     }
 
+    //Hàm lấy tất cả thông tin đơn hàng
     function get_all_order(){
         include PATH_TO_CONNECT_DB;
         $sql="select * from orders";
@@ -126,6 +134,7 @@
         return $result_of_all_orders;
     }
 
+    //Hàm lấy thông tin chi tiết đơn hàng
     function get_detail_order($id_of_order){
         include PATH_TO_CONNECT_DB;
         $sql="select * from order_detail where id_orders=?";
@@ -136,12 +145,24 @@
         return $result_of_detail_order;
     }
 
+    //Hàm cập nhật trạng thái đơn hàng
     function update_order_status($id_of_order, $status){
         include PATH_TO_CONNECT_DB;
         $sql="update orders set status=? where id=?";
         $stmt=$conn->prepare($sql);
         $stmt->execute([$status, $id_of_order]);
         
+    }
+
+    //Hàm kiểm tra xem tên sản phẩm muốn thêm có trùng không
+    function check_name_category($name_category_add_category){
+        $category_name_exist='';
+        include PATH_TO_CONNECT_DB;
+        $sql="select * from category where category_name=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$name_category_add_category]);
+        return $stmt->rowCount();
+        // $sql="insert into category (category_name) values ();";
     }
 
 ?>

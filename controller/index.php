@@ -1,8 +1,8 @@
 <?php 
     ob_start();
     session_start();
-    include '../view/header.php';
     include '../model/file_handle_function.php';
+    include '../view/header.php';
     define('PATH_TO_FILE_PDO','../model/file_pdo_connect.php');
     if(isset($_GET['action'])){
         switch ($_GET['action']){
@@ -82,12 +82,6 @@
                         $stmt=$conn->prepare($sql);
                         $stmt->execute([$_GET['id_of_category']]);
                         $name_of_category=$stmt->fetch()['category_name'];//tên của loại sản phẩm
-                        if($name_of_category=='đồng hồ nam'){
-                            $name_of_category='Đồng hồ nam';
-                        }
-                        if($name_of_category=='đồng hồ nữ'){
-                            $name_of_category='Đồng hồ nữ';
-                        }
                     }
                 }
                 include '../view/product.php';
@@ -99,18 +93,9 @@
                     $sql="select * from category join product on category.id=category_id where product.id=?";
                     $stmt=$conn->prepare($sql);
                     $stmt->execute([$_GET['id_of_product']]);
-                    $name_of_category=$stmt->fetch()['category_name'];
-                    if($name_of_category=='phụ kiện'){
-                        $id_of_category=3;
-                        $name_of_category='Phụ kiện';
-                    }
-                    elseif($name_of_category=='đồng hồ nữ'){
-                        $id_of_category=2;
-                        $name_of_category='Đồng hồ nữ';
-                    }
-                    else{
-                        $id_of_category=1;
-                        $name_of_category='Đồng hồ nam';
+                    while($row = $stmt->fetch()) {
+                        $name_of_category=$row['category_name'];
+                        $id_of_category=$row[0];
                     }
                 }
                 include '../view/detail_product.php';

@@ -67,4 +67,24 @@ footer{
 }
 
 
+/* ------------------------------------- */
+/* Show all category*/
+#btn_add_category_show_all_category{
+    background-color: aquamarine;
+    border: 0px;
+    color: black;
+}
 
+
+/* ------------------------------------- */
+/* Add category*/
+#btn_add_category_add_category{
+    padding: 5px;
+    background-color: #1097cf;
+    border-radius: 6px;
+    border: 0px;
+}
+
+#btn_add_category_add_category:hover{
+    background-color: #2d799a;
+}

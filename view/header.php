@@ -6,6 +6,7 @@
         $_SESSION['remember_phone_number_login']=$_COOKIE["remember_phone_number_login"];
         $_SESSION['remember_password_login']=$_COOKIE["remember_password_login"];
     }
+    $result_of_all_category=get_all_category();
 ?>
 
 <!DOCTYPE html>
@@ -71,9 +72,15 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="../controller/index.php?action=list_product&id_of_category=all">Tất cả sản phẩm</a></li>
-                            <li><a class="dropdown-item" href="../controller/index.php?action=list_product&id_of_category=1">Đồng hồ nam</a></li>
+                            <?php 
+                                if(isset($result_of_all_category)){
+                                    foreach($result_of_all_category as $value){
+                            ?>            
+                                <li><a class="dropdown-item" href="../controller/index.php?action=list_product&id_of_category=<?php echo $value['id'];?>"><?php echo $value['category_name']?></a></li>
+                            <?php }}?>
+                            <!-- <li><a class="dropdown-item" href="../controller/index.php?action=list_product&id_of_category=1">Đồng hồ nam</a></li>
                             <li><a class="dropdown-item" href="../controller/index.php?action=list_product&id_of_category=2">Đồng hồ nữ</a></li>
-                            <li><a class="dropdown-item" href="../controller/index.php?action=list_product&id_of_category=3">Phụ kiện</a></li>
+                            <li><a class="dropdown-item" href="../controller/index.php?action=list_product&id_of_category=3">Phụ kiện</a></li> -->
                         </ul>
                     </li>
                     <li class="nav-item mx-3">
