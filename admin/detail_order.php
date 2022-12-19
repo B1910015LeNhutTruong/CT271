@@ -63,6 +63,11 @@
             <h3 class="text-center">CHASTAIN</h3>
             <p class="text-center">Chi tiết đơn hàng</p>
         </div>
+
+        <div class="row">
+            <a href="show_all_order.php"><button>Quay lại</button></a>
+        </div>
+
         <!-- Table chi tiết đơn hàng -->
         <div class="row">
             <table class="table caption-top">
