@@ -9,6 +9,22 @@
         $result_of_detail_order=get_detail_order($_GET['id_of_order']);
     }
     
+    if(isset($_GET['status_of_order'])){ 
+        $status_of_order=$_GET['status_of_order'];
+    }
+
+    //Cập nhật đơn trạng thái đơn
+    if(isset($_GET['btn_update_status_detail_order']) && isset($_GET['id_of_order'])){
+
+        if(isset($_GET['input_status_detail_order'])){
+            update_order_status($_GET['id_of_order'], $_GET['input_status_detail_order']);
+            $status_of_order=$_GET['input_status_detail_order'];
+            echo '<script>alert("Cập nhật trạng thái thành công!")</script>';
+        }else{
+            echo '<script>alert("Vui lòng chọn trạng thái muốn cập nhật!")</script>';
+        }
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -72,28 +88,25 @@
                         </tr>
 
                     <?php }}?>
-                    <!-- <tr>
-                        <th scope="row">Black Link</th>
-                        <td>3.200.000đ</td>
-                        <td>12</td>
-                        <td>15.000.000đ</td>
-                    </tr> -->
+                    
                 </tbody>
             </table>
         </div>
         
         <div class="row">
-            Trạng thái đơn hàng: <?php if(isset($_GET['status_of_order'])){ echo $_GET['status_of_order']; }?>
+            Trạng thái đơn hàng: <?php if(isset($status_of_order)){ echo $status_of_order; }?>
         </div>
         <!-- form cập nhật trạng thái đơn -->
-        <form action="" method="post">
-            <select>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
+            <select name="input_status_detail_order">
                 <option selected disabled>Chọn trạng thái</option>
                 <option value="Đang xử lý">Đang xử lý</option>
                 <option value="Đang giao hàng">Đang giao hàng</option>
                 <option value="Đã nhận hàng">Đã nhận hàng</option>
                 <option value="Đã hủy">Đã hủy</option>
             </select>
+            <input type="hidden" name="id_of_order" value="<?php if(isset($_GET['id_of_order'])){echo $_GET['id_of_order'];}?>">
+            <button type="submit" name="btn_update_status_detail_order">Cập nhật</button>
         </form>
     </main>
     <!-- footer dùng chung -->

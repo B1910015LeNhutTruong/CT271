@@ -135,4 +135,13 @@
         $result_of_detail_order=$stmt->fetchAll();
         return $result_of_detail_order;
     }
+
+    function update_order_status($id_of_order, $status){
+        include PATH_TO_CONNECT_DB;
+        $sql="update orders set status=? where id=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$status, $id_of_order]);
+        
+    }
+
 ?>
