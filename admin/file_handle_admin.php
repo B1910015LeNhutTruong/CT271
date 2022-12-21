@@ -162,7 +162,14 @@
         $stmt=$conn->prepare($sql);
         $stmt->execute([$name_category_add_category]);
         return $stmt->rowCount();
-        // $sql="insert into category (category_name) values ();";
     }
 
+    //hàm cập nhật tên loại sản phẩm
+    function update_category_name($id_of_category, $name_of_category){
+        include PATH_TO_CONNECT_DB;
+        $sql="update category set category_name=? where id=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$name_of_category, $id_of_category]);
+    }
+    
 ?>

@@ -88,3 +88,20 @@ footer{
 #btn_add_category_add_category:hover{
     background-color: #2d799a;
 }
+
+
+/* ------------------------------------- */
+/* Edit category*/
+#btn_edit_category_name{
+    background-color: #1097cf;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+#btn_back_edit_category{
+    padding: 10px;
+    background-color: aqua;
+    border: 0px;
+    border-radius: 5px;
+}

@@ -1,13 +1,18 @@
-<?php 
+<?php
     include 'file_handle_admin.php';
 
     if(empty($_COOKIE['admin_login_successful'])){
         header("Location: login.php");
     }
 
-    $result_of_all_category=get_all_category();
-
-
+    if(isset($_POST['btn_edit_category_name'])){
+        if(isset($_POST['id_of_category_edit_category']) && isset($_POST['name_category_edit']) && $_POST['name_category_edit']!=''){
+            update_category_name($_POST['id_of_category_edit_category'], $_POST['name_category_edit']);
+            echo '<script>alert("Cập nhật thông tin tên loại sản phẩm thành công!")</script>';
+        }else{
+            echo '<script>alert("Vui lòng nhập lại tên bạn muốn sửa!")</script>';
+        }
+    }    
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +21,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý danh mục sản phẩm</title>
+    <title>Chỉnh sửa danh mục sản phẩm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
@@ -44,33 +49,22 @@
     <main class="container" style="margin-top: 50px; margin-bottom: 100px">
         <div class="row">
             <h3 class="text-center">CHASTAIN</h3>
-            <p class="text-center">Tất cả danh mục sản phẩm ở đây</p>
+            <p class="text-center">Chỉnh sửa danh mục sản phẩm</p>
         </div>
-        <div class="row mb-3">
-            <a href="add_category.php"><button id="btn_add_category_show_all_category" class="btn btn-primary">Thêm loại sản phẩm mới</button></a>
+        <div class="row mb-2">
+            <a href="show_all_category.php"><button id="btn_back_edit_category">Quay lại</button></a>
         </div>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th scope="col">Tên danh mục</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    if(isset($result_of_all_category)){
-                        foreach($result_of_all_category as $value){
-                ?>
-                    <tr>
-                        <td><?php echo $value['category_name'];?></td>
-                        <td>
-                            <a href="edit_category.php?id_of_category_edit_category=<?php echo $value['id'];?>&current_category_name=<?php echo $value['category_name'];?>"><button class="btn btn-info">Sửa</button></a>
-                            <a href=""><button class="btn btn-danger">Xóa</button></a>
-                        </td>
-                    </tr>
-                <?php }}?>
-            </tbody>
-        </table> 
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+            <div class="mb-3">
+                <label class="form-label">Tên loại sản phẩm hiện tại</label>
+                <input type="text" value="<?php if(isset($_GET['current_category_name'])){ echo $_GET['current_category_name']; }?>" class="form-control" readonly> 
+                <label for="name_category_edit" class="form-label mt-2">Nhập lại tên mới cho loại sản phẩm</label>
+                <input type="text" name="name_category_edit" class="form-control" id="name_category_edit">
+
+                <input type="hidden" name="id_of_category_edit_category" value="<?php if(isset($_GET['id_of_category_edit_category'])){ echo $_GET['id_of_category_edit_category']; }?>">
+            </div>
+            <button type="submit" id="btn_edit_category_name" name="btn_edit_category_name">Cập nhật loại sản phẩm</button>
+        </form>
     </main>
     <!-- footer dùng chung -->
     <footer>

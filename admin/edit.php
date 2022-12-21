@@ -98,7 +98,7 @@
                     <input type="text" name="price_product_edit" class="form-control" id="price_product_edit" value="<?php echo $data_of_the_product_to_be_edited['price'];?>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="category_product_edit" class="form-label">Loại sản phẩm hiện tại</label>
+                    <label for="category_product_edit" class="form-label">Loại sản phẩm*</label>
                     <!-- <input type="text" class="form-control mb-3" style="background-color: gray;" value="<?php if($data_of_the_product_to_be_edited['category_id']==1){echo "Đồng hồ nam";}elseif($data_of_the_product_to_be_edited['category_id']==2){echo "Đồng hồ nữ";}else echo "Phụ kiện";?>" readonly> -->
                     <select class="form-select" id="category_product_edit" name="category_product_edit" required>
                         <!-- <option value="1">Đồng hồ nam</option>
