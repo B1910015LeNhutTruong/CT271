@@ -76,7 +76,7 @@
         </div>
         <div class="collapse mt-2" id="collapseExample">
             <div class="card card-body" style="width: 18rem;" id="card_body_show_all_product">
-                <a href="">Quản lý tài khoản</a>
+                <!-- <a href="">Quản lý tài khoản</a> -->
                 <a href="show_all_order.php">Quản lý đơn hàng</a>
                 <a href="show_all_category.php">Quản lý danh mục sản phẩm</a>
             </div>

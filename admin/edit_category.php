@@ -5,9 +5,15 @@
         header("Location: login.php");
     }
 
+    //Lấy danh mục hiện tại
+    if(isset($_GET['current_category_name'])){
+        $current_category_name=$_GET['current_category_name'];
+    }
+
     if(isset($_POST['btn_edit_category_name'])){
         if(isset($_POST['id_of_category_edit_category']) && isset($_POST['name_category_edit']) && $_POST['name_category_edit']!=''){
             update_category_name($_POST['id_of_category_edit_category'], $_POST['name_category_edit']);
+            $current_category_name=$_POST['name_category_edit'];
             echo '<script>alert("Cập nhật thông tin tên loại sản phẩm thành công!")</script>';
         }else{
             echo '<script>alert("Vui lòng nhập lại tên bạn muốn sửa!")</script>';
@@ -57,7 +63,7 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <div class="mb-3">
                 <label class="form-label">Tên loại sản phẩm hiện tại</label>
-                <input type="text" value="<?php if(isset($_GET['current_category_name'])){ echo $_GET['current_category_name']; }?>" class="form-control" readonly> 
+                <input type="text" value="<?php if(isset($current_category_name)){ echo $current_category_name; }?>" class="form-control" readonly> 
                 <label for="name_category_edit" class="form-label mt-2">Nhập lại tên mới cho loại sản phẩm</label>
                 <input type="text" name="name_category_edit" class="form-control" id="name_category_edit">
 
