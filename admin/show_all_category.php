@@ -7,6 +7,14 @@
 
     $result_of_all_category=get_all_category();
 
+    if(isset($_GET['delete_category']) && isset($_GET['id_of_category'])){
+        delete_product_of_a_category($_GET['id_of_category']);
+        delete_category($_GET['id_of_category']);
+        echo '<script>alert("Xóa loại sản phẩm thành công!")</script>';
+        echo '<script>location.reload</script>';
+    }
+
+    
 
 ?>
 
@@ -59,16 +67,36 @@
             <tbody>
                 <?php
                     if(isset($result_of_all_category)){
+                        $i=0;
                         foreach($result_of_all_category as $value){
                 ?>
                     <tr>
                         <td><?php echo $value['category_name'];?></td>
                         <td>
                             <a href="edit_category.php?id_of_category_edit_category=<?php echo $value['id'];?>&current_category_name=<?php echo $value['category_name'];?>"><button class="btn btn-info">Sửa</button></a>
-                            <a href=""><button class="btn btn-danger">Xóa</button></a>
+                            
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php if(isset($i)){echo $i;}?>">Xóa</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop<?php if(isset($i)){echo $i;}?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel<?php if(isset($i)){echo $i;}?>" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel<?php if(isset($i)){echo $i;}?>">Xóa loại sản phẩm</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Khi đồng ý, loại sản phẩm và các sản phẩm thuộc loại này sẽ bị xóa
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                        <button type="button" class="btn btn-primary"><a href="?delete_category&id_of_category=<?php echo $value['id'];?>" style="text-decoration: none; color: #fff;">OK</a></button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
-                <?php }}?>
+                <?php $i++;}}?>
             </tbody>
         </table> 
     </main>

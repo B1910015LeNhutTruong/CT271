@@ -171,5 +171,26 @@
         $stmt=$conn->prepare($sql);
         $stmt->execute([$name_of_category, $id_of_category]);
     }
+
+    //Hàm xóa sản phẩm (xóa cả thông tin và ảnh)
+    function delete_product_of_a_category($id_of_category){
+        include PATH_TO_CONNECT_DB;
+        //Chọn ra id của các sản phẩm thuộc loại cần xóa
+        $sql="select * from product where category_id=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$id_of_category]);
+        $result=$stmt->fetchAll();
+        foreach($result as $value){
+            delete_product($value['id']);
+        }
+    }
     
+    //Hàm xóa loại sản phẩm
+    function delete_category($id_of_category){
+        include PATH_TO_CONNECT_DB;
+        $sql="delete from category where id=?";
+        $stmt=$conn->prepare($sql);
+        $stmt->execute([$id_of_category]);
+    }
+
 ?>
