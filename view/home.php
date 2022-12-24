@@ -158,6 +158,18 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="row">
+            <p id="quotes_home">
+                <?php 
+                    if(isset($quotes_random)){
+                        echo $quotes_random['quoteText'];
+                    }
+                ?>
+            </p>
+        </div>
+    </div>
 </main>
 
 <!-- Creating a Countdown Timer -->

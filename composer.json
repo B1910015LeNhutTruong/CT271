@@ -1,0 +1,14 @@
+{
+    "name": "nhuttruong/ct271",
+    "description": "du an website thuong mai dien tu kinh doanh dong ho thoi trang",
+    "authors": [
+        {
+            "name": "Le Nhut Truong",
+            "email": "truong.lnt123@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "require": {
+        "ajaz/random-quotes-generator-php": "^1.0"
+    }
+}

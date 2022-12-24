@@ -153,9 +153,12 @@ header{
 
 /* ------------------------------------- */
 /* Home */
-/* #carouselExampleIndicators img{
-    height: 80%;
-} */
+#quotes_home{
+    color: #1097cf;
+    font-style: italic;
+    text-align: center;
+    padding-top: 50px;
+}
 
 .banner_info_relative_home{
     position: relative;

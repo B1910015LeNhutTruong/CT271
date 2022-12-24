@@ -182,10 +182,21 @@
                 include '../view/change_password.php';
                 break;    
             default:
+                //Bắt đầu tạo quotes ngẫu nhiên
+                require '../vendor/autoload.php';
+                $quote = new \RandomQuotes\RandomQuotes();
+
+                $quotes_random = $quote -> generate();
+
                 include '../view/home.php';    
                 break;
         }
     }else{
+        //Bắt đầu tạo quotes ngẫu nhiên
+        require '../vendor/autoload.php';
+        $quote = new \RandomQuotes\RandomQuotes();
+
+        $quotes_random = $quote -> generate();
         include '../view/home.php';
     }
 
