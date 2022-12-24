@@ -10,8 +10,7 @@
     if(isset($_GET['delete_category']) && isset($_GET['id_of_category'])){
         delete_product_of_a_category($_GET['id_of_category']);
         delete_category($_GET['id_of_category']);
-        echo '<script>alert("Xóa loại sản phẩm thành công!")</script>';
-        echo '<script>location.reload</script>';
+        header("Location: show_all_category.php");
     }
 
     
