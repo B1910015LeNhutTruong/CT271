@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 12:39 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th3 27, 2023 lúc 06:39 AM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ct271_project`
+-- Cơ sở dữ liệu: `ct271_project`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `account`
+-- Cấu trúc bảng cho bảng `account`
 --
 
 CREATE TABLE `account` (
@@ -36,12 +36,12 @@ CREATE TABLE `account` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `account`
+-- Đang đổ dữ liệu cho bảng `account`
 --
 
 INSERT INTO `account` (`id`, `full_name`, `email`, `phone_number`, `pass_word`) VALUES
-(1, 'Trường', 'truong.lnt123@gmail.com', '0966899548', '$2y$10$yCmcFMdfUXvYyu6C.U9qMucr6p3H/4ttBxWN4GztQh4Hixbxs/bae'),
-(2, 'Lê Nhựt Trường', 'truong@gmail.com', '0999999999', '$2y$10$kU7OFYKClpFrRvogoc6PEuAo0g0JuRO/Mbk/4/ZIIwzCC.iNSssoe'),
+(1, 'Trường', 'truong.lnt123@gmail.com', '0966899548', '$2y$10$3s9h0sHNlebztxF5rru6henp9n2RPYl.TkB2x9uhjdGRL9SzJe0c6'),
+(2, 'Lê Nhựt Trường', 'truong@gmail.com', '0999999999', '$2y$10$zD0.kOVh4J.cDDzoT0jmc.Xbym3zxsD6EYAjGlWMum9AVkW0JtN9K'),
 (3, 'Trường Lê ', 'truongle.lnt123@gmail.com', '1111111111', '$2y$10$k9ajdu22hj.zGqY2KOPP3uvLQWXZ5lx2T6pYWfy9SyuKgAjZ4IXGO'),
 (4, 'Trường Lê ', 'truongle@gmail.com', '1111111111', '$2y$10$gjub9r1MfRJU9.wW3OBVWuNF7BvbA4u1zZeCO1Smqy.D3jkzWIycO'),
 (5, 'Admin', 'admin@gmail.com', '0966899548', '$2y$10$COavZovNx4q/C3CyG0EyBOeI8SOWD3rbefhu4DgKNqpwOjKXUOdxy'),
@@ -49,12 +49,14 @@ INSERT INTO `account` (`id`, `full_name`, `email`, `phone_number`, `pass_word`) 
 (7, 'tô anh duy', 'duy@gmail.com', '9879879879', '$2y$10$G5vpPc1Qex5VnfDe5w46jODD/oowzvWttfT4f5YjAarbqFyCpuRoe'),
 (8, 'duy', 'duy1@gmail.com', '9879879879', '$2y$10$C03AgY5CyKRGePEcItpOpuA7jOPqFUjfQlrymfC8.rsWE7weQPowm'),
 (9, 'Hồng Cẩm', 'hongcam@gmail.com', '0342389962', '$2y$10$5gU.CGsDcqbDZr2ZOn/shuTyv4tS7v9R/4NVOgoBnE2Zqb2J.0OEi'),
-(10, 'Lê Nhựt Trườngg', 'truongg@gmail.com', '0987654321', '$2y$10$BYAwe57ex759Aq598xIC6uMX6GHpouWp1XjQ3jE8nVaj/L9Z50V9S');
+(10, 'Lê Nhựt Trườngg', 'truongg@gmail.com', '0987654321', '$2y$10$BYAwe57ex759Aq598xIC6uMX6GHpouWp1XjQ3jE8nVaj/L9Z50V9S'),
+(11, 'Lê Thanh Trọng', 'trong@gmail.com', '0345639739', '$2y$10$aUSRIporDLMZyFeIyruyg.AqlwOumWSM6s2/HYc90XZukseOg0P8m'),
+(13, 'Trường', 'nhuttruong@gmail.com', '0966899548', '$2y$10$4bCLhLZjTuVntnGEgv.b/OnQ9yfEUJmjGPH2uEPIt5cjAikrxBGiq');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Cấu trúc bảng cho bảng `category`
 --
 
 CREATE TABLE `category` (
@@ -63,18 +65,18 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `category`
+-- Đang đổ dữ liệu cho bảng `category`
 --
 
 INSERT INTO `category` (`id`, `category_name`) VALUES
-(1, 'đồng hồ nam'),
-(2, 'đồng hồ nữ'),
-(3, 'phụ kiện');
+(1, 'Đồng hồ nam'),
+(2, 'Đồng hồ nữ'),
+(3, 'Phụ kiện');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `orders`
+-- Cấu trúc bảng cho bảng `orders`
 --
 
 CREATE TABLE `orders` (
@@ -84,38 +86,29 @@ CREATE TABLE `orders` (
   `phone_number` char(10) NOT NULL,
   `email` varchar(100) NOT NULL,
   `total` int(11) NOT NULL,
-  `payment` varchar(100) NOT NULL
+  `payment` varchar(100) NOT NULL,
+  `status` text NOT NULL DEFAULT 'Đang xử lý'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `orders`
+-- Đang đổ dữ liệu cho bảng `orders`
 --
 
-INSERT INTO `orders` (`id`, `full_name`, `address`, `phone_number`, `email`, `total`, `payment`) VALUES
-(1, 'Lê Nhựt Trường', 'vĩnh bình châu thành   an giang', '0966899548', 'truong.lnt@gmail.com', 55600000, 'Thanh toán tiền mặt khi nhận hàng (COD)'),
-(2, 'Trường', 'trường đại học cần thơ', '0988422744', 't@gmail.cm', 42630000, 'Thanh toán chuyển khoản (Internet Banking)'),
-(3, 'Trường', 'sa đéc sóc trăng an giang', '0966899548', 'truong.lnt123@gmail.com', 41630000, 'Thanh toán qua thẻ tín dụng'),
-(4, 'Trường Lê', 'akjgdkajwdgjagwdkajg', '0988422744', 'truongle@gmail.com', 43030000, 'Thanh toán qua thẻ tín dụng'),
-(5, 'Duy ', 'an giang châu thành, asdasd', '8979879877', 'duy@gmail.com', 51030000, 'Thanh toán chuyển khoản (Internet Banking)'),
-(6, 'Trường Lê ', 'an giangfsafasfasfsafasfas', '1111111111', 'truongle@gmail.com', 5430000, 'Thanh toán qua thẻ tín dụng'),
-(7, 'Trường', 'aaaaaaaaaaaaaaaaaaaaaa', '0966899548', 'truong.lnt123@gmail.com', 6430000, 'Thanh toán qua thẻ tín dụng'),
-(8, 'Trường', 'bbbbbbbbbbbbbbbbbbbbb', '0966899548', 'truong.lnt123@gmail.com', 17230000, 'Thanh toán tiền mặt khi nhận hàng (COD)'),
-(9, 'lê nhựt truòng', 'aksjdhkasdhjuagwdwkgdjwgdjawgdg', '0000000000', '2awd@gmail.com', 2830000, 'Thanh toán qua thẻ tín dụng'),
-(10, 'lê nhựt truòng', 'aksjdhkasdhjuagwdwkgdjwgdjawgdg', '0000000000', '2awd@gmail.com', 2830000, 'Thanh toán qua thẻ tín dụng'),
-(11, 'Lê Nhựt Trường', 'vĩnh bình châu thành an giang', '0966899548', 'truong.lnt123456789@gmail.com', 23030000, 'Thanh toán chuyển khoản (Internet Banking)'),
-(12, 'tô anh duy', 'asjhdkajshdiuhaskfasufhaksdhka', '9879879879', 'duy@gmail.com', 2830000, 'Thanh toán qua thẻ tín dụng'),
-(13, 'Trung', '6546546543213215198as7dasd', '9879879787', 'trung@gmail.com', 121030000, 'Thanh toán tiền mặt khi nhận hàng (COD)'),
-(14, 'lê nhựt truòng', 'an giang chầu thành awiaidhjdihadil', '0988422744', 'b1910015@student.ctu.edu.vn', 8430000, 'Thanh toán chuyển khoản (Internet Banking)'),
-(15, 'lê nhựt trường 123', 'an giang vĩnh bình tân phú', '9879879879', 'truong112222@gmail.com', 114230000, 'Thanh toán qua thẻ tín dụng'),
-(16, 'lê nhựt truòng', '987987987987987987897897897', '9879879879', 'truongle@gmail.com', 22730000, 'Thanh toán qua thẻ tín dụng'),
-(17, 'Lê Nhựt Trường', 'Tổ 10 242, ấp Vĩnh Thọ, xã Vĩnh Bình, huyện Châu Thành, tỉnh An Giang', '0988422744', 'truongcute@gmail.com', 26030000, 'Thanh toán tiền mặt khi nhận hàng (COD)'),
-(18, 'Lê Nhựt Trường kkkkk', 'Vĩnh Bình Châu Thành Kiên Giang', '0912345678', 'truongg@gmail.com', 102730000, 'Thanh toán chuyển khoản (Internet Banking)'),
-(19, 'Lê Nhựt Trườngg bbbb', 'cái khế ninh kiều an giang', '0111222333', 'truongg@gmail.com.vn', 52230000, 'Thanh toán qua thẻ tín dụng');
+INSERT INTO `orders` (`id`, `full_name`, `address`, `phone_number`, `email`, `total`, `payment`, `status`) VALUES
+(35, 'Trường', 'Vĩnh Bình Châu Thành An Giang', '0966899548', 'truong.lnt123@gmail.com', 12930000, 'Thanh toán tiền mặt khi nhận hàng (COD)', 'Đã hủy'),
+(36, 'Trường', 'Tân Phú Tân Châu An Giang', '0966899548', 'truong.lnt123@gmail.com', 53230000, 'Thanh toán qua thẻ tín dụng', 'Đang giao hàng'),
+(37, 'Trường', 'Cái Khế Ninh Kiều Cần Thơ', '0966899548', 'truong.lnt123@gmail.com', 11230000, 'Thanh toán chuyển khoản (Internet Banking)', 'Đang giao hàng'),
+(38, 'Trường', 'Hóc Môn Châu Thành Cần Thơ', '0966899548', 'truong.lnt123@gmail.com', 2030000, 'Thanh toán qua thẻ tín dụng', 'Đang xử lý'),
+(39, 'Trường', 'An Bình Ninh Kiều Cần Thơ', '0966899548', 'truong.lnt123@gmail.com', 3990000, 'Thanh toán chuyển khoản (Internet Banking)', 'Đã hủy'),
+(40, 'Trường', 'Số 10 Tri Tôn An Giang', '0966899548', 'truong.lnt123@gmail.com', 14030000, 'Thanh toán chuyển khoản (Internet Banking)', 'Đang xử lý'),
+(41, 'Trường', 'Số 5 Châu Thành An Giang', '0966899548', 'truong.lnt123@gmail.com', 25430000, 'Thanh toán tiền mặt khi nhận hàng (COD)', 'Đang giao hàng'),
+(42, 'Trường', 'Vĩnh Bình, Châu Thành, An Giang', '0966899548', 'nhuttruong@gmail.com', 10030000, 'Thanh toán qua thẻ tín dụng', 'Đang xử lý'),
+(43, 'Hồng Cẩm', 'asdasdasdasdasdasdasdasdasd', '0342389962', 'hongcam@gmail.com', 3230000, 'Thanh toán chuyển khoản (Internet Banking)', 'Đã hủy');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_detail`
+-- Cấu trúc bảng cho bảng `order_detail`
 --
 
 CREATE TABLE `order_detail` (
@@ -129,59 +122,31 @@ CREATE TABLE `order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `order_detail`
+-- Đang đổ dữ liệu cho bảng `order_detail`
 --
 
 INSERT INTO `order_detail` (`id`, `product_name`, `product_img`, `price`, `amount`, `thanhtien`, `id_orders`) VALUES
-(1, 'Coronada Blanc', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp19.jpg?v=1632716413000', 3800000, 10, 38000000, 1),
-(2, 'Black Link', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp10-c071025e-52d6-4c86-8e35-21f600ee136b.jpg?v=1632724245000', 3200000, 5, 16000000, 1),
-(3, 'Minimal Cuff', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp24-4.jpg?v=1632902539000', 1600000, 1, 1600000, 1),
-(4, 'Black Link', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp10-c071025e-52d6-4c86-8e35-21f600ee136b.jpg?v=1632724245000', 3200000, 3, 9600000, 2),
-(5, 'Coronada Blanc', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp19.jpg?v=1632716413000', 3800000, 7, 26600000, 2),
-(6, 'Minimal Cuff', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp24-4.jpg?v=1632902539000', 1600000, 4, 6400000, 2),
-(7, 'Coronada Blanc', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp19.jpg?v=1632716413000', 3800000, 8, 30400000, 3),
-(8, 'Black Link', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp10-c071025e-52d6-4c86-8e35-21f600ee136b.jpg?v=1632724245000', 3200000, 3, 9600000, 3),
-(9, 'Minimal Cuff', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp24-4.jpg?v=1632902539000', 1600000, 1, 1600000, 3),
-(10, 'Black Link', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp10-c071025e-52d6-4c86-8e35-21f600ee136b.jpg?v=1632724245000', 3200000, 5, 16000000, 4),
-(11, 'Coronada Blanc', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp19.jpg?v=1632716413000', 3800000, 5, 19000000, 4),
-(12, 'Minimal Cuff', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp24-4.jpg?v=1632902539000', 1600000, 5, 8000000, 4),
-(13, 'Black Link', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp10-c071025e-52d6-4c86-8e35-21f600ee136b.jpg?v=1632724245000', 3200000, 10, 32000000, 5),
-(14, 'Coronada Blanc', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp19.jpg?v=1632716413000', 3800000, 5, 19000000, 5),
-(15, 'Coronada Blanc', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp19.jpg?v=1632716413000', 3800000, 1, 3800000, 6),
-(16, 'Minimal Cuff', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp24-4.jpg?v=1632902539000', 1600000, 1, 1600000, 6),
-(17, 'Black Link', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp10-c071025e-52d6-4c86-8e35-21f600ee136b.jpg?v=1632724245000', 3200000, 2, 6400000, 7),
-(18, 'Black Link', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp10-c071025e-52d6-4c86-8e35-21f600ee136b.jpg?v=1632724245000', 3200000, 2, 6400000, 8),
-(19, 'Coronada Blanc', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp19.jpg?v=1632716413000', 3800000, 2, 7600000, 8),
-(20, 'Minimal Cuff', 'https://bizweb.dktcdn.net/thumb/large/100/438/171/products/sp24-4.jpg?v=1632902539000', 1600000, 2, 3200000, 8),
-(21, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 1, 2800000, 9),
-(22, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 1, 2800000, 10),
-(23, 'Orient Aubrey', 'aubrey.png', 4600000, 5, 23000000, 11),
-(24, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 1, 2800000, 12),
-(25, 'Rolex S1', 's1.png', 2800000, 25, 70000000, 13),
-(26, 'MVMT Ralley Green Gunmetal', 'ralley_green_gunmetal.png', 5700000, 2, 11400000, 13),
-(27, 'Daniel Wellington Sherry', 'sherry.png', 3600000, 11, 39600000, 13),
-(28, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 3, 8400000, 14),
-(29, 'Orient Aubrey', 'aubrey.png', 4600000, 8, 36800000, 15),
-(30, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 3, 8400000, 15),
-(31, 'Hublot Axiom', 'axiom.png', 4600000, 15, 69000000, 15),
-(32, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 5, 14000000, 16),
-(33, 'MVMT Minimal Cuff', 'minimal_cuff.png', 1600000, 1, 1600000, 16),
-(34, 'MVMT Twist Cuff', 'twist_cuff.png', 2400000, 1, 2400000, 16),
-(35, 'MVMT Charm Cuff', 'charm_cuff.png', 2400000, 1, 2400000, 16),
-(36, 'MVMT Crown Cuff', 'crown_cuff.png', 2300000, 1, 2300000, 16),
-(37, 'Rolex S1', 's1.png', 2800000, 6, 16800000, 17),
-(38, 'Hublot Axiom', 'axiom.png', 4600000, 2, 9200000, 17),
-(39, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 15, 42000000, 18),
-(40, 'Orient Aubrey', 'aubrey.png', 4600000, 10, 46000000, 18),
-(41, 'Rolex Opar', 'opar.png', 4900000, 3, 14700000, 18),
-(42, 'MVMT Desert', 'desert.png', 4100000, 6, 24600000, 19),
-(43, 'Daniel Wellington Sherry', 'sherry.png', 3600000, 3, 10800000, 19),
-(44, 'MVMT Charm Cuff', 'charm_cuff.png', 2400000, 7, 16800000, 19);
+(70, 'MVMT Rodeo', 'rodeo.png', 3500000, 3, 10500000, 35),
+(71, 'MVMT Twist Cuff', 'twist_cuff.png', 2400000, 1, 2400000, 35),
+(72, 'Hublot Axiom', 'axiom.png', 4600000, 10, 46000000, 36),
+(73, 'Daniel Wellington Sherry', 'sherry.png', 3600000, 2, 7200000, 36),
+(74, 'MVMT Origin Bracelet', 'origin_bracelet.png', 2800000, 4, 11200000, 37),
+(75, 'Sofa góc Bella', 'sofa_goc_bella.png', 2000000, 1, 2000000, 38),
+(76, 'Trường đẹp trai', 'a2.png', 990000, 4, 3960000, 39),
+(77, 'MV A1', 'a1.png', 3000000, 4, 12000000, 40),
+(78, 'MV A2', 'a2.png', 1000000, 2, 2000000, 40),
+(79, 'Sofa băng BELLA', 'sofa_bang_bella.png', 3100000, 4, 12400000, 41),
+(80, 'MV A1', 'a1.png', 3000000, 3, 9000000, 41),
+(81, 'MV A2', 'a2.png', 2000000, 2, 4000000, 41),
+(82, 'MVMT Black Link', 'black_link.png', 3200000, 1, 3200000, 42),
+(83, 'MVMT Bloom Rosé', 'bloom_rose.png', 4400000, 1, 4400000, 42),
+(84, 'MVMT Twist Cuff', 'twist_cuff.png', 2400000, 1, 2400000, 42),
+(85, 'MVMT Black Link', 'black_link.png', 3200000, 1, 3200000, 43);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `product`
+-- Cấu trúc bảng cho bảng `product`
 --
 
 CREATE TABLE `product` (
@@ -196,7 +161,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `product`
+-- Đang đổ dữ liệu cho bảng `product`
 --
 
 INSERT INTO `product` (`id`, `product_name`, `price`, `category_id`, `description`, `color`, `brand`, `img`) VALUES
@@ -223,87 +188,87 @@ INSERT INTO `product` (`id`, `product_name`, `price`, `category_id`, `descriptio
 (47, 'MVMT Origin Bracelet', 2800000, 3, 'Vòng tay MVMT Origin Bracelet, được làm từ Stainless Steel với kiểu dáng trẻ trung và phong cách, là phụ kiện không thể thiếu được của người phụ nữ hiện đại', 'bạc', 'MVMT', 'origin_bracelet.png');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `account`
+-- Chỉ mục cho bảng `account`
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `category`
+-- Chỉ mục cho bảng `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `orders`
+-- Chỉ mục cho bảng `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `order_detail`
+-- Chỉ mục cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_orders` (`id_orders`);
 
 --
--- Indexes for table `product`
+-- Chỉ mục cho bảng `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `account`
+-- AUTO_INCREMENT cho bảng `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT cho bảng `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `orders`
+-- AUTO_INCREMENT cho bảng `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT for table `order_detail`
+-- AUTO_INCREMENT cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
--- AUTO_INCREMENT for table `product`
+-- AUTO_INCREMENT cho bảng `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `order_detail`
+-- Các ràng buộc cho bảng `order_detail`
 --
 ALTER TABLE `order_detail`
   ADD CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`id_orders`) REFERENCES `orders` (`id`);
 
 --
--- Constraints for table `product`
+-- Các ràng buộc cho bảng `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
